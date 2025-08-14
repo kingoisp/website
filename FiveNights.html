@@ -9,6 +9,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Dark Mode Toggle Styles */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    outline: none;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1) rotate(30deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode-toggle:active {
+    transform: scale(0.95);
+}
+        .light-mode {
+    --dark-color: #f5f5f5;
+    --light-color: #2d3436;
+    --card-color: #ffffff;
+    --text-color: #333333;
+    --text-light: #666666;
+  }
         :root {
             --primary-color: #6c5ce7;
             --primary-light: #a29bfe;
@@ -692,8 +728,39 @@ Demander à ChatGPT
             </div>
         </div>
     </footer>
-    
+    <!-- Dark mode toggle button -->
+<div class="dark-mode-toggle" id="darkModeToggle">
+    <i class="fas fa-sun"></i>
+</div>
     <script>
+        // Dark Mode Toggle Functionality
+const darkModeToggle = document.getElementById('darkModeToggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Set initial mode
+if (localStorage.getItem('darkMode') === 'enabled' || 
+    (localStorage.getItem('darkMode') === null && prefersDarkScheme.matches)) {
+    document.body.classList.add('dark-mode');
+    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+} else {
+    document.body.classList.add('light-mode');
+    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+}
+
+// Toggle function
+darkModeToggle.addEventListener('click', () => {
+    if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        localStorage.setItem('darkMode', 'disabled');
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'enabled');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+});
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -705,4 +772,5 @@ Demander à ChatGPT
         });
     </script>
 </body>
+
 </html>
