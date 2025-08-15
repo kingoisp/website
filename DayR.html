@@ -38,13 +38,24 @@
 .dark-mode-toggle:active {
     transform: scale(0.95);
 }
-         .light-mode {
+      .light-mode {
     --dark-color: #f5f5f5;
     --light-color: #2d3436;
     --card-color: #ffffff;
     --text-color: #333333;
     --text-light: #666666;
-  }
+
+    /* تعديل ألوان الأزرار */
+    --btn-secondary-bg: rgba(0,0,0,0.1);
+    --btn-secondary-color: #333333;
+}
+
+.light-mode .btn-secondary {
+    background: var(--btn-secondary-bg);
+    color: var(--btn-secondary-color);
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
         :root {
             --primary-color: #6c5ce7;
             --primary-light: #a29bfe;
@@ -765,3 +776,4 @@ darkModeToggle.addEventListener('click', () => {
 </body>
 
 </html>
+
