@@ -54,6 +54,15 @@
             --transition: all 0.3s ease;
         }
         
+        /* Light Mode Overrides */
+        .light-mode {
+            --dark-color: #f5f6fa; /* Light Background */
+            --card-color: #ffffff; /* Light Card background */
+            --text-color: #1e1e1e; /* Dark Text */
+            --text-light: #6c757d; /* Lighter Dark Text */
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -760,5 +769,6 @@ darkModeToggle.addEventListener('click', () => {
 </body>
 
 </html>
+
 
 
